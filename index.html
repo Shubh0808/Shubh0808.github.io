@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shubham Kumar — DevOps & GenAI Engineer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a0f1e;--navy2:#0f172a;--navy3:#1e293b;--navy4:#334155;
+  --gold:#c9a84c;--gold2:#e8c97a;--gold3:rgba(201,168,76,.12);
+  --teal:#2dd4bf;--teal2:rgba(45,212,191,.12);
+  --text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;--border2:#334155;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:var(--navy)}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(10,15,30,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 2rem}
+.logo{font-size:1.15rem;font-weight:800;color:var(--gold);letter-spacing:.5px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.82rem;letter-spacing:.5px;color:var(--muted);transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:.82rem;padding:.45rem 1.1rem;border:1px solid var(--gold);color:var(--gold);border-radius:6px;transition:all .2s}
+.nav-cta:hover{background:var(--gold);color:var(--navy)}
+
+/* SECTIONS */
+section{padding:7rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none}
+#hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.05) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-tag{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal)}
+.hero-name{font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:1.05;margin-bottom:1rem;background:linear-gradient(135deg,#fff 0%,var(--gold2) 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-titles{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.hero-pill{font-size:.78rem;padding:.3rem .9rem;border-radius:20px;border:1px solid var(--border2);color:var(--muted);background:var(--navy3)}
+.hero-pill.active{border-color:rgba(201,168,76,.4);color:var(--gold);background:var(--gold3)}
+.hero-desc{max-width:560px;color:var(--muted);font-size:.98rem;margin-bottom:2.5rem;line-height:1.85}
+.hero-desc strong{color:var(--text)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:8px;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;border:none;letter-spacing:.3px}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+.hero-stats{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.stat-num{font-size:2rem;font-weight:800;color:var(--gold);line-height:1}
+.stat-label{font-size:.75rem;color:var(--muted);margin-top:.3rem}
+.hero-badges{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.cert-badge{font-size:.7rem;padding:.3rem .8rem;border-radius:4px;background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.2);color:var(--teal)}
+
+/* SECTION HEADER */
+.sec-label{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.sec-title{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;margin-bottom:.5rem}
+.sec-line{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:2px;margin:1rem 0 3rem}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:540px;margin-top:-.5rem;margin-bottom:2.5rem}
+
+/* ABOUT */
+#about{background:var(--navy2)}
+.about-grid{display:grid;grid-template-columns:320px 1fr;gap:5rem;align-items:center}
+.about-card{background:var(--navy3);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;text-align:center;position:relative}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:20px 20px 0 0}
+.avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold3),var(--teal2));border:2px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:2rem;font-weight:900;color:var(--gold)}
+.about-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.2rem}
+.about-card .role{font-size:.82rem;color:var(--teal);margin-bottom:.5rem}
+.about-card .loc{font-size:.8rem;color:var(--muted)}
+.about-divider{height:1px;background:var(--border);margin:1.25rem 0}
+.about-stat-row{display:flex;justify-content:space-around}
+.about-mini-stat .num{font-size:1.2rem;font-weight:800;color:var(--gold)}
+.about-mini-stat .lbl{font-size:.7rem;color:var(--muted)}
+.about-text p{color:var(--muted);font-size:.95rem;margin-bottom:1rem;line-height:1.85}
+.about-text p strong{color:var(--text)}
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.tag{padding:.3rem .85rem;border-radius:20px;font-size:.75rem;background:var(--gold3);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+
+/* SKILLS */
+#skills{background:var(--navy)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
+.skill-card{background:var(--navy3);border:1px solid var(--border);border-radius:14px;padding:1.6rem;transition:all .25s;position:relative;overflow:hidden}
+.skill-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal));opacity:0;transition:opacity .25s}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-5px)}
+.skill-card:hover::after{opacity:1}
+.skill-icon{font-size:1.4rem;margin-bottom:.8rem}
+.skill-cat{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;font-weight:600}
+.skill-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);margin-bottom:.45rem}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* PROJECTS */
+#projects{background:var(--navy2)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.proj-card{background:var(--navy);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .25s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px)}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.proj-badge{font-size:.68rem;padding:.28rem .75rem;border-radius:20px;background:var(--teal2);color:var(--teal);border:1px solid rgba(45,212,191,.25);letter-spacing:.5px}
+.proj-year{font-size:.75rem;color:var(--muted)}
+.proj-name{font-size:1.15rem;font-weight:800;margin-bottom:.6rem;color:var(--text)}
+.proj-tagline{font-size:.8rem;color:var(--gold);margin-bottom:.75rem;font-style:italic}
+.proj-problem{font-size:.85rem;color:var(--muted);margin-bottom:.75rem;padding:.75rem 1rem;background:rgba(201,168,76,.04);border-left:2px solid rgba(201,168,76,.3);border-radius:0 6px 6px 0;line-height:1.7}
+.proj-desc{font-size:.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.75;flex:1}
+.proj-impact{display:flex;align-items:flex-start;gap:.5rem;font-size:.82rem;color:var(--teal);margin-bottom:1.25rem;padding:.6rem .8rem;background:var(--teal2);border-radius:6px}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.proj-stack span{font-size:.7rem;padding:.2rem .6rem;border-radius:4px;background:var(--navy3);color:var(--muted);border:1px solid var(--border)}
+.proj-links{display:flex;gap:1rem;margin-top:auto}
+.proj-link{font-size:.82rem;color:var(--gold);display:flex;align-items:center;gap:.3rem;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:1px;transition:all .2s}
+.proj-link:hover{border-color:var(--gold)}
+
+/* EXPERIENCE */
+#experience{background:var(--navy)}
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),var(--teal),transparent)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-dot{position:absolute;left:-2.15rem;top:6px;width:16px;height:16px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.tl-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.tl-card{background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color .2s}
+.tl-card:hover{border-color:var(--border2)}
+.tl-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.tl-role{font-size:1.05rem;font-weight:800}
+.tl-period{font-size:.75rem;color:var(--gold);background:var(--gold3);padding:.2rem .7rem;border-radius:20px;border:1px solid rgba(201,168,76,.2);white-space:nowrap}
+.tl-company{font-size:.88rem;color:var(--teal);margin-bottom:.75rem}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.tl-bullets li{font-size:.87rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.7}
+.tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:.15rem}
+.tl-bullets li strong{color:var(--text)}
+
+/* CERTS */
+#certs{background:var(--navy2)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.cert-card{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1rem;transition:all .25s}
+.cert-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-3px)}
+.cert-icon{font-size:1.6rem;flex-shrink:0}
+.cert-name{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.cert-issuer{font-size:.78rem;color:var(--teal)}
+
+/* CONTACT */
+#contact{background:var(--navy)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-desc{color:var(--muted);margin-bottom:2rem;font-size:.95rem;line-height:1.8}
+.contact-links{display:flex;flex-direction:column;gap:.75rem}
+.contact-link{display:flex;align-items:center;gap:.85rem;color:var(--muted);font-size:.88rem;padding:.85rem 1.1rem;border-radius:10px;border:1px solid var(--border);transition:all .2s}
+.contact-link:hover{border-color:rgba(201,168,76,.4);color:var(--gold);background:var(--gold3)}
+.cl-icon{width:34px;height:34px;border-radius:8px;background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-group label{font-size:.78rem;color:var(--muted);letter-spacing:.5px}
+.form-group input,.form-group textarea{background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-size:.88rem;outline:none;font-family:inherit;transition:border-color .2s;resize:none}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(201,168,76,.5)}
+.form-group textarea{height:130px}
+.btn-send{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:.8rem;border-radius:8px;font-weight:800;font-size:.88rem;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px}
+.btn-send:hover{transform:translateY(-2px)}
+
+footer{text-align:center;padding:2.5rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+footer span{color:var(--gold)}
+
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-stats{flex-wrap:wrap;gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">SK.</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certs</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:kumar19subham@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <div class="hero-dot"></div>
+      <div class="hero-tag">Available for Opportunities · Bangalore, India</div>
+    </div>
+    <div class="hero-name">Shubham Kumar</div>
+    <div class="hero-titles">
+      <span class="hero-pill active">DevOps & MLOps Engineer</span>
+      <span class="hero-pill">Cloud & GenAI Platform Engineer</span>
+      <span class="hero-pill">Full-Stack AI Developer</span>
+    </div>
+    <p class="hero-desc">
+      Building <strong>production-grade cloud systems</strong> with a passion for Zero Trust security, GenAI platforms, and developer experience. AWS & IBM certified with hands-on expertise across multi-cloud, Kubernetes, and LLM pipelines.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Projects</a>
+      <a href="https://github.com/Shubh0808" target="_blank" class="btn btn-outline">GitHub ↗</a>
+    </div>
+    <div class="hero-badges">
+      <span class="cert-badge">🏅 IBM DevOps Certified</span>
+      <span class="cert-badge">☁️ AWS Academy Certified</span>
+      <span class="cert-badge">🔐 Zero Trust | DevSecOps</span>
+      <span class="cert-badge">🤖 GenAI & RAG Systems</span>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">2+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">15+</div><div class="stat-label">Production Services</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-label">Tech Stack Items</div></div>
+      <div><div class="stat-num">40%</div><div class="stat-label">Dev Productivity Boost</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="avatar">SK</div>
+        <h3>Shubham Kumar</h3>
+        <div class="role">DevOps & GenAI Engineer</div>
+        <div class="loc">📍 Bangalore, India</div>
+        <div class="about-divider"></div>
+        <div class="about-stat-row">
+          <div class="about-mini-stat"><div class="num">AWS</div><div class="lbl">Certified</div></div>
+          <div class="about-mini-stat"><div class="num">IBM</div><div class="lbl">Certified</div></div>
+          <div class="about-mini-stat"><div class="num">B.Tech</div><div class="lbl">CSE '26</div></div>
+        </div>
+        <div class="about-divider"></div>
+        <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+          <div style="margin-bottom:.4rem">📧 kumar19subham@gmail.com</div>
+          <div style="margin-bottom:.4rem">📱 +91-8797601432</div>
+          <div><a href="https://github.com/Shubh0808" target="_blank" style="color:var(--teal)">github.com/Shubh0808</a></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="sec-label">About Me</div>
+        <h2 class="sec-title">Engineering systems that scale securely.</h2>
+        <div class="sec-line"></div>
+        <p>I'm a <strong>DevOps & Cloud Engineer</strong> currently at Mindsprint, where I architect CI/CD pipelines, manage Kubernetes workloads across AKS and AWS, and drive developer productivity through self-service platforms using Backstage and Roadie.</p>
+        <p>My recent focus has been at the intersection of <strong>DevSecOps and GenAI</strong> — building a production RAG operations platform that reduces incident MTTR by ~45 minutes, and a Zero Trust DevSecOps pipeline with policy-as-code enforcement using OPA/Rego.</p>
+        <p>Currently pursuing B.Tech in CSE (Cloud Technology & Virtualization with AWS) at <strong>Sharda University</strong>, graduating 2026.</p>
+        <div class="about-tags">
+          <span class="tag">CI/CD Pipelines</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">RAG Systems</span>
+          <span class="tag">Zero Trust Security</span>
+          <span class="tag">Infrastructure as Code</span>
+          <span class="tag">MLOps</span>
+          <span class="tag">Open Source</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-label">What I Work With</div>
+    <h2 class="sec-title">Skills & Technologies</h2>
+    <div class="sec-line"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-cat">Cloud Platforms</div>
+        <div class="skill-item"><span class="dot"></span>AWS (EC2, VPC, IAM, S3, RDS)</div>
+        <div class="skill-item"><span class="dot"></span>AWS (Lambda, CloudWatch, CFN)</div>
+        <div class="skill-item"><span class="dot"></span>Microsoft Azure (AKS, ACR)</div>
+        <div class="skill-item"><span class="dot"></span>Azure Pipelines</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-cat">DevOps & CI/CD</div>
+        <div class="skill-item"><span class="dot"></span>Jenkins & GitHub Actions</div>
+        <div class="skill-item"><span class="dot"></span>ArgoCD & GitOps</div>
+        <div class="skill-item"><span class="dot"></span>Docker & Kubernetes</div>
+        <div class="skill-item"><span class="dot"></span>Helm, Minikube, Docker Compose</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛡️</div>
+        <div class="skill-cat">DevSecOps & Security</div>
+        <div class="skill-item"><span class="dot"></span>OPA/Rego (Policy-as-Code)</div>
+        <div class="skill-item"><span class="dot"></span>SBOM, CodeQL, SAST/SCA</div>
+        <div class="skill-item"><span class="dot"></span>Checkmarx, SonarQube</div>
+        <div class="skill-item"><span class="dot"></span>Zero Trust Architecture</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-cat">AI/ML & GenAI</div>
+        <div class="skill-item"><span class="dot"></span>LangChain, OpenAI API</div>
+        <div class="skill-item"><span class="dot"></span>HuggingFace Transformers</div>
+        <div class="skill-item"><span class="dot"></span>RAG, LLM Applications</div>
+        <div class="skill-item"><span class="dot"></span>Prompt Engineering & Guardrails</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧪</div>
+        <div class="skill-cat">MLOps Stack</div>
+        <div class="skill-item"><span class="dot"></span>MLflow & Model Registry</div>
+        <div class="skill-item"><span class="dot"></span>Drift Detection (PSI)</div>
+        <div class="skill-item"><span class="dot"></span>ChromaDB, pgvector</div>
+        <div class="skill-item"><span class="dot"></span>Scikit-learn, Batch Scoring</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-cat">Monitoring & Obs.</div>
+        <div class="skill-item"><span class="dot"></span>Prometheus & Grafana</div>
+        <div class="skill-item"><span class="dot"></span>AWS CloudWatch</div>
+        <div class="skill-item"><span class="dot"></span>OpenTelemetry</div>
+        <div class="skill-item"><span class="dot"></span>SLO/SLI Burn-rate Logic</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-cat">Infrastructure as Code</div>
+        <div class="skill-item"><span class="dot"></span>Terraform (Multi-cloud)</div>
+        <div class="skill-item"><span class="dot"></span>AWS CloudFormation</div>
+        <div class="skill-item"><span class="dot"></span>Backstage & Roadie</div>
+        <div class="skill-item"><span class="dot"></span>Reusable IaC Modules</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-cat">Frontend & Backend</div>
+        <div class="skill-item"><span class="dot"></span>React / Next.js</div>
+        <div class="skill-item"><span class="dot"></span>Node.js, FastAPI, Python</div>
+        <div class="skill-item"><span class="dot"></span>Java, Bash, REST APIs</div>
+        <div class="skill-item"><span class="dot"></span>SQL / PL/SQL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-label">Featured Work</div>
+    <h2 class="sec-title">Projects</h2>
+    <div class="sec-sub">Production-grade systems solving real engineering problems.</div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-badge">GenAI · RAG · DevOps</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-name">Sentinel RAGOps Platform</div>
+        <div class="proj-tagline">Production GenAI Engineering for On-Call Incident Resolution</div>
+        <div class="proj-problem">⚠️ Problem: On-call engineers lacked instant, grounded answers during incidents — causing prolonged resolution times and repeated manual runbook searches.</div>
+        <p class="proj-desc">Built a production-grade RAG operations platform featuring a deterministic embedding pipeline, metadata-filtered cosine retrieval, grounded answer engine with audit-ready citations, and an automated quality evaluation layer (relevance, coverage, citation health). Designed with OpenAI / Azure OpenAI / Ollama provider swap pattern and pgvector roadmap for scaling.</p>
+        <div class="proj-impact">✅ Impact: Reduced MTTR for on-call incidents by ~45 min/incident by enabling instant, evidence-grounded runbook Q&A via natural language.</div>
+        <div class="proj-stack">
+          <span>Node.js</span><span>JavaScript</span><span>Docker</span><span>GitHub Actions</span><span>Vector Store</span><span>RAG Evaluation</span><span>CI/CD</span><span>pgvector</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/Shubh0808" target="_blank">GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-badge">DevSecOps · Zero Trust · IaC</div>
+          <div class="proj-year">2025</div>
+        </div>
+        <div class="proj-name">Zero Trust DevSecOps Pipeline</div>
+        <div class="proj-tagline">Policy-as-Code & End-to-End Security Automation</div>
+        <div class="proj-problem">⚠️ Problem: Traditional security checklists fail at scale — teams needed automated, policy-enforced security gates blocking non-compliant releases before production.</div>
+        <p class="proj-desc">Engineered a full DevSecOps reference pipeline: CodeQL SAST → SCA (npm audit + dependency review) → Docker build → SBOM fingerprinting → OPA/Rego Kubernetes admission control → risk scoring engine (severity × exposure × exploit maturity × service criticality). Implemented hardened K8s manifests (non-root, dropped capabilities, read-only root FS) and Terraform modules with encrypted, versioned storage.</p>
+        <div class="proj-impact">✅ Impact: Policy-as-code replaced manual security reviews — automated release governance across source, build, infrastructure, and runtime layers.</div>
+        <div class="proj-stack">
+          <span>OPA/Rego</span><span>Terraform</span><span>Kubernetes</span><span>Docker</span><span>CodeQL</span><span>SBOM</span><span>GitHub Actions</span><span>JavaScript</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/Shubh0808" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-label">My Journey</div>
+    <h2 class="sec-title">Experience & Education</h2>
+    <div class="sec-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">DevOps Engineer</div>
+            <div class="tl-period">Jun 2024 – Present</div>
+          </div>
+          <div class="tl-company">Mindsprint · Bangalore, India</div>
+          <ul class="tl-bullets">
+            <li>Maintained and enhanced enterprise CI/CD pipelines across Jenkins, GitHub Actions, and Azure Pipelines with integrated Checkmarx SAST gates — reducing deployment failures by <strong>30%</strong>.</li>
+            <li>Deployed and managed containerised microservices on AKS and AWS using Docker, Helm charts, and ACR; set up Prometheus + Grafana dashboards achieving near-<strong>100% observability</strong> across <strong>15+ production services</strong>.</li>
+            <li>Engineered developer self-service platforms via Backstage and Roadie, centralising <strong>20+ service catalogs</strong> — improving developer productivity by <strong>40%</strong> and cutting onboarding from days to hours.</li>
+            <li>Led cloud cost optimisation and infrastructure automation across multi-domain production environments; contributed to incident response, RCA, and SRE best practices.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">Trainee Cloud Engineer</div>
+            <div class="tl-period">May 2024 – Jul 2024</div>
+          </div>
+          <div class="tl-company">DigitalImpulse Online Pvt. Ltd. · New Delhi, India</div>
+          <ul class="tl-bullets">
+            <li>Deployed and managed AWS infrastructure (EC2, VPC, S3, IAM) and automated environment provisioning with CloudFormation — reducing manual setup time by <strong>50%</strong> and eliminating configuration drift.</li>
+            <li>Implemented AWS CloudWatch monitoring and alerting pipelines; collaborated on cloud cost governance, performance troubleshooting, and secure IAM policy hardening.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">B.Tech — Computer Science & Engineering</div>
+            <div class="tl-period">2022 – 2026</div>
+          </div>
+          <div class="tl-company">Sharda University · Greater Noida, India</div>
+          <ul class="tl-bullets">
+            <li>Specialisation in <strong>Cloud Technology & Virtualization with AWS</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="container">
+    <div class="sec-label">Credentials</div>
+    <h2 class="sec-title">Certifications</h2>
+    <div class="sec-line"></div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div><div class="cert-name">IBM Applied DevOps Engineering Professional Certificate</div><div class="cert-issuer">Coursera / IBM</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div><div class="cert-name">AWS Academy Graduate — Cloud Operations</div><div class="cert-issuer">Amazon Web Services</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div><div class="cert-name">AWS Academy Graduate — Cloud Developing</div><div class="cert-issuer">Amazon Web Services</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🗄️</div>
+        <div><div class="cert-name">Oracle Database Foundations Certified Junior Associate</div><div class="cert-issuer">Oracle</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🗄️</div>
+        <div><div class="cert-name">Oracle PL/SQL Certified</div><div class="cert-issuer">Oracle</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☕</div>
+        <div><div class="cert-name">Java Foundations Certified</div><div class="cert-issuer">Oracle</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-label">Let's Connect</div>
+    <h2 class="sec-title">Get In Touch</h2>
+    <div class="sec-line"></div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-desc">Open to exciting DevOps, Cloud, or GenAI engineering roles and collaborations. Whether it's discussing a project, a job opportunity, or just cloud architecture — I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:kumar19subham@gmail.com">
+            <div class="cl-icon">✉</div>kumar19subham@gmail.com
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/shubhamkumar0808/" target="_blank">
+            <div class="cl-icon">in</div>linkedin.com/in/shubhamkumar0808
+          </a>
+          <a class="contact-link" href="https://github.com/Shubh0808" target="_blank">
+            <div class="cl-icon">&lt;/&gt;</div>github.com/Shubh0808
+          </a>
+          <a class="contact-link" href="tel:+918797601432">
+            <div class="cl-icon">📱</div>+91-8797601432
+          </a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>YOUR NAME</label>
+          <input type="text" placeholder="Jane Smith"/>
+        </div>
+        <div class="form-group">
+          <label>EMAIL ADDRESS</label>
+          <input type="email" placeholder="jane@company.com"/>
+        </div>
+        <div class="form-group">
+          <label>MESSAGE</label>
+          <textarea placeholder="Hi Shubham, I'd love to discuss..."></textarea>
+        </div>
+        <button class="btn-send">Send Message ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by <span>Shubham Kumar</span> &nbsp;·&nbsp; Bangalore, India &nbsp;·&nbsp; 2025</p>
+</footer>
+
+</body>
+</html>
